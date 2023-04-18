@@ -186,7 +186,6 @@ class DisplayPlayerCommands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget commands;
-
     if ((mahjongPlayState.upForGrabs.id == 0) &&
         (playerNum == mahjongPlayState.playerTurn)) {
       Row playActions = Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -202,7 +201,6 @@ class DisplayPlayerCommands extends StatelessWidget {
           child: ElevatedButton(
               onPressed: () {
                 mahjongPlayState.checkMahjong(playerNum);
-                print("Checked for Mahjong");
               }, child: const Text('Mahjong!')),
         )
       ]);
@@ -227,6 +225,17 @@ class DisplayPlayerCommands extends StatelessWidget {
               child: const Text('Draw')),
         ));
         playActions.children.removeAt(0);
+      }
+
+      if (mahjongPlayState.mtHands[playerNum]!.kangReserve != 0){
+        playActions.children.insert(0, Padding(
+          padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+          child: ElevatedButton(
+              onPressed: () {
+                mahjongPlayState.payKang(playerNum);
+              },
+              child: const Text('Pay Kang')),
+        ));
       }
     } else if (mahjongPlayState.upForGrabs.id != 0) {
       Row playActions = Row(
@@ -253,6 +262,7 @@ class DisplayPlayerCommands extends StatelessWidget {
             child:
                 ElevatedButton(onPressed: () {
                   mahjongPlayState.checkMahjong(playerNum);
+                  print('hihi');
                 }, child: const Text('Mahjong')),
           ),
         ],
@@ -293,7 +303,6 @@ class DisplayPlayerCommands extends StatelessWidget {
 
       commands = playActions;
     } else {
-      print("pID: $playerNum, Up for Grabs: ${mahjongPlayState.upForGrabs.id}, Turn: ${mahjongPlayState.playerTurn}");
       commands = SizedBox(height: 16);
     }
 

@@ -10,9 +10,9 @@ import 'package:flutter/foundation.dart';
 /// the value of [progress] reaches [goal].
 List<PlayerProfile> players = [
   PlayerProfile(id: 1, username: "Juness", tayoCoins: 1000),
-  PlayerProfile(id: 1, username: "Eula", tayoCoins: 1000),
-  PlayerProfile(id: 1, username: "Charles", tayoCoins: 1000),
-  PlayerProfile(id: 1, username: "Gerry", tayoCoins: 1000),
+  PlayerProfile(id: 2, username: "Eula", tayoCoins: 1000),
+  PlayerProfile(id: 3, username: "Charles", tayoCoins: 1000),
+  PlayerProfile(id: 4, username: "Gerry", tayoCoins: 1000),
 ];
 
 class PlayerProfile {

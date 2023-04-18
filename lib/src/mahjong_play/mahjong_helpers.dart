@@ -183,8 +183,9 @@ class MtHand {
   int pairs = 0;
   int chows = 0;
   int pongs = 0;
-  bool goingFor7Pairs = false;
   int round = 0;
+  int kangReserve = 0;
+  Map<String,bool> checkSuits = {'balls': false, 'chars': false, 'sticks': false};
 
   MtHand();
 

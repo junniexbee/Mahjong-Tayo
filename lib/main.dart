@@ -182,12 +182,14 @@ class MyApp extends StatelessWidget {
                       final winner = map['winner'] as String;
                       final playerNum = map['playerNum'] as int;
                       final winningAmbitions = map['winningAmbitions'] as Map<String, bool>;
+                      final winnings = map['winnings'] as int;
 
                       return buildMyTransition<void>(
                         child: WinGameScreen(
                           winner: winner,
                           playerNum: playerNum,
                           winningAmbitions: winningAmbitions,
+                          winnings: winnings,
                           key: const Key('mahjong win'),
                         ),
                         color: context.watch<Palette>().mtGreen1,

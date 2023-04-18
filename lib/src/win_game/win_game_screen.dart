@@ -17,11 +17,12 @@ import '../style/responsive_screen.dart';
 class WinGameScreen extends StatelessWidget {
   // final Score score;
   final String winner;
-  final int playerNum;
+  int playerNum;
   final Map<String, bool> winningAmbitions;
+  final int winnings;
 
-  const WinGameScreen(
-      {super.key, required this.winner, required this.playerNum, required this.winningAmbitions});
+  WinGameScreen(
+      {super.key, required this.winner, required this.playerNum, required this.winningAmbitions, required this.winnings});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,30 @@ class WinGameScreen extends StatelessWidget {
     final adsRemoved =
         context.watch<InAppPurchaseController?>()?.adRemoval.active ?? false;
     final palette = context.watch<Palette>();
+    int playerIndex;
 
     const gap = SizedBox(height: 10);
     String ambitionsText = '';
 
     print(winningAmbitions);
+
+    if (playerNum == 0){
+      playerNum = 4;
+      playerIndex = 3;
+    } else{
+      playerIndex = playerNum - 1;
+    }
+
+    if (winningAmbitions['bunot'] == true){
+      if (ambitionsText != ''){
+        ambitionsText += ' | ';
+      }
+      ambitionsText += "Bunot";
+    }
     if (winningAmbitions['7pairs'] == true){
+      if (ambitionsText != ''){
+        ambitionsText += ' | ';
+      }
       ambitionsText += "7 Pairs";
     }
     if (winningAmbitions['escalera'] == true){
@@ -54,6 +73,12 @@ class WinGameScreen extends StatelessWidget {
         ambitionsText += ' | ';
       }
       ambitionsText += "All Pong";
+    }
+    if (winningAmbitions['allUp'] == true){
+      if (ambitionsText != ''){
+        ambitionsText += ' | ';
+      }
+      ambitionsText += "All Up";
     }
     if (winningAmbitions['fullFlush'] == true){
       if (ambitionsText != ''){
@@ -116,7 +141,8 @@ class WinGameScreen extends StatelessWidget {
           Center(
             child: Text(
               // 'Score: ${score.score}\n'
-              'TayoCoins: ${players.elementAt(playerNum)!.tayoCoins}',
+              'Winnings: $winnings'
+              '\nTayoCoins: ${players.elementAt(playerIndex)!.tayoCoins}',
               style:
                   TextStyle(fontFamily: 'Permanent Marker', color: palette.mtGreen1, fontSize: 20),
             ),

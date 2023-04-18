@@ -211,7 +211,7 @@ class _MahjongPlayScreenState extends State<MahjongPlayScreen> {
     myMahjongPlayState = MahjongPlayState(
       goal: 13,
       deck: widget.deck,
-      playerTurn: widget.manoPlayer,
+      playerTurn: _playerTurn,
       mtHands: widget.hands,
       onWin: _playerWon,
       context: context
@@ -285,7 +285,8 @@ class _MahjongPlayScreenState extends State<MahjongPlayScreen> {
       'winner':
           myMahjongPlayState.playerMap[myMahjongPlayState.playerTurn]!.username,
       'playerNum': myMahjongPlayState.playerTurn,
-      'winningAmbitions': myMahjongPlayState.winningAmbitions
+      'winningAmbitions': myMahjongPlayState.winningAmbitions,
+      'winnings': myMahjongPlayState.winnings
     });
   }
 }
